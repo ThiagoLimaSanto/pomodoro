@@ -1,7 +1,6 @@
 .countdown {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2.4rem;
-    padding-top: 3.2rem;
+    font-size: clamp(8rem, 25vw, 16rem);
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.3;
 }
