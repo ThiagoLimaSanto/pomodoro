@@ -1,6 +1,7 @@
-import './App.css'
+import './styes/theme.css'
+import './styes/global.css'
 
-function App() {
+export function App() {
 
   return (
     <>
@@ -8,5 +9,3 @@ function App() {
     </>
   )
 }
-
-export default App
