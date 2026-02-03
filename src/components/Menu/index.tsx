@@ -1,8 +1,9 @@
 import { FaHome, FaHistory, FaCog } from "react-icons/fa";
 import { MdDarkMode } from "react-icons/md";
 import { FiSun } from "react-icons/fi";
-import Styles from "./styles.module.css"
 import { useState, useEffect } from "react";
+
+import Styles from "./styles.module.css"
 
 type AvailableThemes = 'dark' | 'light'
 

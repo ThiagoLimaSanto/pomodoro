@@ -1,4 +1,5 @@
 import { MdTimer } from "react-icons/md";
+
 import Styles from "./styles.module.css"
 
 export const Logo = () => {
