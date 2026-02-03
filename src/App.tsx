@@ -9,6 +9,7 @@ import { FaPlayCircle } from "react-icons/fa";
 
 import './styes/global.css';
 import './styes/theme.css';
+import { Footer } from './components/Footer';
 
 export function App() {
 
@@ -43,7 +44,7 @@ export function App() {
         </form>
       </Container>
       <Container>
-        
+        <Footer />
       </Container>
     </>
   )

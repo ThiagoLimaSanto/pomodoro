@@ -23,7 +23,7 @@ body {
     gap: 2.4rem;
 }
 
-.formRow{
+.formRow {
     display: flex;
     align-items: center;
     justify-content: center;
