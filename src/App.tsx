@@ -1,3 +1,5 @@
+
+import { TaskContextProvider } from './contexts/TaskContext/TaskContextProvider';
 import { Home } from './pages/Home';
 
 import './styes/global.css';
@@ -7,7 +9,9 @@ export function App() {
 
   return (
     <>
-      <Home />
+      <TaskContextProvider>
+        <Home />
+      </TaskContextProvider>
     </>
   )
 }
