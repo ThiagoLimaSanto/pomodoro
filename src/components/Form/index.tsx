@@ -11,6 +11,7 @@ import { getNextCycleType } from "../../utils/getNextCycleType";
 import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 
 import Styles from "./styles.module.css"
+import { Tips } from "../Tips";
 
 export function Form() {
     const { state, dispatch } = useTaskContext()
@@ -61,12 +62,12 @@ export function Form() {
             </div>
 
             <div className={Styles.formRow}>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                <Tips />
             </div>
 
-            <div className={Styles.formRow}>
+            {state.currentCycle > 0 && <div className={Styles.formRow}>
                 <Cycles />
-            </div>
+            </div>}
 
             <div className={Styles.formRow}>
                 {!state.activeTask ? (<DefaultButton
