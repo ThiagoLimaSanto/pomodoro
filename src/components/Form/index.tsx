@@ -27,6 +27,7 @@ export function Form() {
 
         if (!taskName) {
             alert('Preencha o nome da tarefa')
+            return
         }
 
         const newTask: TaskModel = {
