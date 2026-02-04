@@ -1,4 +1,5 @@
 import { FaPlayCircle } from "react-icons/fa";
+import { FaPauseCircle } from "react-icons/fa";
 import { Cycles } from "../Cycles";
 import { DefaultButton } from "../DefaultButton";
 import { DefaultInput } from "../DefaultInput";
@@ -7,9 +8,9 @@ import type { TaskModel } from "../../models/TaskModel";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { getNextCycle } from "../../utils/getNextCycle";
 import { getNextCycleType } from "../../utils/getNextCycleType";
+import { formatSecondToMinutes } from "../../utils/formatSecondToMinutes";
 
 import Styles from "./styles.module.css"
-import { formatSecondToMinutes } from "../../utils/formatSecondToMinutes";
 
 export function Form() {
     const { state, setState } = useTaskContext()
@@ -55,14 +56,24 @@ export function Form() {
                 }
             }
         })
+    }
 
+    function handleInterruptTask() {
+        setState(prevState => {
+            return {
+                ...prevState,
+                activeTask: null,
+                secondsRemaining: 0,
+                formattedSecondsRemaining: '00:00'
+            }
+        })
     }
 
     return (
         <form onSubmit={handleCreateNewTask} className={Styles.form}>
             <div className={Styles.formRow}>
                 <DefaultInput type="text" id="task" labelText="Task" placeholder='Digite algo...'
-                    ref={taskNameInput} />
+                    ref={taskNameInput} disabled={!!state.activeTask} />
             </div>
 
             <div className={Styles.formRow}>
@@ -74,7 +85,11 @@ export function Form() {
             </div>
 
             <div className={Styles.formRow}>
-                <DefaultButton type="submit" icon={<FaPlayCircle />} color='green' />
+                {!state.activeTask ? (<DefaultButton
+                    key={'submit'}
+                    aria-label="Iniciar nova tarefa" title="Iniciar nova tarefa" type="submit" icon={<FaPlayCircle />} color='green' />) : (<DefaultButton
+                        key={'button'}
+                        aria-label="Encerrar tarefa" title="Encerrar tarefa" type="button" icon={<FaPauseCircle />} color='red' onClick={handleInterruptTask} />)}
             </div>
         </form>
     )
