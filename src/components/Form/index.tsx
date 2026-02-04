@@ -8,12 +8,12 @@ import type { TaskModel } from "../../models/TaskModel";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { getNextCycle } from "../../utils/getNextCycle";
 import { getNextCycleType } from "../../utils/getNextCycleType";
-import { formatSecondToMinutes } from "../../utils/formatSecondToMinutes";
+import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 
 import Styles from "./styles.module.css"
 
 export function Form() {
-    const { state, setState } = useTaskContext()
+    const { state, dispatch } = useTaskContext()
     const taskNameInput = useRef<HTMLInputElement>(null)
 
     const nextCycle = getNextCycle(state.currentCycle)
@@ -41,31 +41,15 @@ export function Form() {
             type: nextCycleType
         }
 
-        const secondsRemaining = newTask.duration * 60
-
-        setState(prevState => {
-            return {
-                ...prevState,
-                activeTask: newTask,
-                currentCycle: nextCycle,
-                secondsRemaining,
-                formattedSecondsRemaining: formatSecondToMinutes(secondsRemaining),
-                tasks: [...prevState.tasks, newTask],
-                config: {
-                    ...prevState.config
-                }
-            }
+        dispatch({
+            type: TaskActionTypes.START_TASK,
+            payload: newTask
         })
     }
 
     function handleInterruptTask() {
-        setState(prevState => {
-            return {
-                ...prevState,
-                activeTask: null,
-                secondsRemaining: 0,
-                formattedSecondsRemaining: '00:00'
-            }
+        dispatch({
+            type: TaskActionTypes.INTERRUPT_TASK
         })
     }
 
