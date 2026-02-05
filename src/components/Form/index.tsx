@@ -17,6 +17,7 @@ import Styles from "./styles.module.css"
 export function Form() {
     const { state, dispatch } = useTaskContext()
     const taskNameInput = useRef<HTMLInputElement>(null)
+    const lastTaskname = state.tasks[state.tasks.length - 1]?.name || ''
 
     const nextCycle = getNextCycle(state.currentCycle)
     const nextCycleType = getNextCycleType(nextCycle)
@@ -63,7 +64,7 @@ export function Form() {
         <form onSubmit={handleCreateNewTask} className={Styles.form}>
             <div className={Styles.formRow}>
                 <DefaultInput type="text" id="task" labelText="Task" placeholder='Digite algo...'
-                    ref={taskNameInput} disabled={!!state.activeTask} />
+                    ref={taskNameInput} disabled={!!state.activeTask} defaultValue={lastTaskname} />
             </div>
 
             <div className={Styles.formRow}>
