@@ -4,6 +4,7 @@ import { FiSun } from "react-icons/fi";
 import { useState, useEffect } from "react";
 
 import Styles from "./styles.module.css"
+import { Link } from "react-router-dom";
 
 type AvailableThemes = 'dark' | 'light'
 
@@ -34,18 +35,18 @@ export const Menu = () => {
 
     return (
         <nav className={Styles.menu}>
-            <a className={Styles.menuLink} href="#" aria-label='Ir para a home' title="Home">
+            <Link className={Styles.menuLink} to='/' aria-label='Ir para a home' title="Home">
                 <FaHome />
-            </a>
-            <a className={Styles.menuLink} href="#" aria-label='Ver histórico' title="Histórico">
+            </Link>
+            <Link className={Styles.menuLink} to='' aria-label='Ver histórico' title="Histórico">
                 <FaHistory />
-            </a>
-            <a className={Styles.menuLink} href="#" aria-label='Ir para Configurações' title="Configurações">
+            </Link>
+            <Link className={Styles.menuLink} to='' aria-label='Ir para Configurações' title="Configurações">
                 <FaCog />
-            </a>
-            <a onClick={handleThemeChange} className={Styles.menuLink} href="#" aria-label='Mudar Tema' title="Mudar Tema">
+            </Link>
+            <Link onClick={handleThemeChange} className={Styles.menuLink} to='' aria-label='Mudar Tema' title="Mudar Tema">
                 {nextThemeIcon[theme]}
-            </a>
+            </Link>
         </nav>
     )
 }
