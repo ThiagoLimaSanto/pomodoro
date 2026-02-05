@@ -1,10 +1,10 @@
-import { FaHome, FaHistory, FaCog } from "react-icons/fa";
-import { MdDarkMode } from "react-icons/md";
+import { useEffect, useState } from "react";
+import { FaCog, FaHistory, FaHome } from "react-icons/fa";
 import { FiSun } from "react-icons/fi";
-import { useState, useEffect } from "react";
+import { MdDarkMode } from "react-icons/md";
 
-import Styles from "./styles.module.css"
-import { Link } from "react-router-dom";
+import { RouterLink } from "../RouterLink";
+import Styles from "./styles.module.css";
 
 type AvailableThemes = 'dark' | 'light'
 
@@ -35,18 +35,18 @@ export const Menu = () => {
 
     return (
         <nav className={Styles.menu}>
-            <Link className={Styles.menuLink} to='/' aria-label='Ir para a home' title="Home">
+            <RouterLink className={Styles.menuLink} href='/' aria-label='Ir para a home' title="Home">
                 <FaHome />
-            </Link>
-            <Link className={Styles.menuLink} to='' aria-label='Ver histórico' title="Histórico">
+            </RouterLink>
+            <RouterLink className={Styles.menuLink} href='' aria-label='Ver histórico' title="Histórico">
                 <FaHistory />
-            </Link>
-            <Link className={Styles.menuLink} to='' aria-label='Ir para Configurações' title="Configurações">
+            </RouterLink>
+            <RouterLink className={Styles.menuLink} href='' aria-label='Ir para Configurações' title="Configurações">
                 <FaCog />
-            </Link>
-            <Link onClick={handleThemeChange} className={Styles.menuLink} to='' aria-label='Mudar Tema' title="Mudar Tema">
+            </RouterLink>
+            <a onClick={handleThemeChange} className={Styles.menuLink} href='' aria-label='Mudar Tema' title="Mudar Tema">
                 {nextThemeIcon[theme]}
-            </Link>
+            </a>
         </nav>
     )
 }
