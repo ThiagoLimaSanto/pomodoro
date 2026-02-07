@@ -41,7 +41,7 @@ export const Menu = () => {
             <RouterLink className={Styles.menuLink} href='/history' aria-label='Ver histórico' title="Histórico">
                 <FaHistory />
             </RouterLink>
-            <RouterLink className={Styles.menuLink} href='' aria-label='Ir para Configurações' title="Configurações">
+            <RouterLink className={Styles.menuLink} href='/settings' aria-label='Ir para Configurações' title="Configurações">
                 <FaCog />
             </RouterLink>
             <a onClick={handleThemeChange} className={Styles.menuLink} href='' aria-label='Mudar Tema' title="Mudar Tema">

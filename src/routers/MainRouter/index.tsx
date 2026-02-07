@@ -4,6 +4,7 @@ import { Home } from "../../pages/Home";
 import { AboutPomodoro } from "../../pages/AboutPomodoro";
 import { NotFound } from "../../pages/NotFound";
 import { History } from "../../pages/History";
+import { Settings } from "../../pages/Settings";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
             {
                 path: '/history/',
                 element: <History />
+            },
+            {
+                path: '/settings/',
+                element: <Settings />
             },
             {
                 path: '*',
