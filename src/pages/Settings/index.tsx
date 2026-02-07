@@ -4,7 +4,7 @@ import { Heading } from "../../components/Heading";
 import { MainTemplate } from "../../templates/MainTemplate";
 import { MdSave } from "react-icons/md";
 import { DefaultButton } from "../../components/DefaultButton";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 
 import Styles from "../../components/Form/styles.module.css";
@@ -12,6 +12,10 @@ import { showMessage } from "../../adapters/showMessage";
 import { TaskActionTypes } from "../../contexts/TaskContext/taskActions";
 
 export function Settings() {
+    useEffect(() => {
+        document.title = 'Configurações - Pomodoro'
+    }, [])
+
     const { state, dispatch } = useTaskContext()
     const workTimeInputRef = useRef<HTMLInputElement>(null)
     const shortBreakTimeInputRef = useRef<HTMLInputElement>(null)
